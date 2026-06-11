@@ -1,0 +1,283 @@
+body {
+  background: #f8f9fa;
+  color: #212529;
+}
+
+body.dark-mode {
+  background: #111827;
+  color: #e5e7eb;
+}
+
+body.dark-mode .navbar {
+  background-color: #1f2937 !important;
+}
+
+body.dark-mode .card {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+body.dark-mode .table,
+body.dark-mode .table th,
+body.dark-mode .table td {
+  color: #000000 !important;
+}
+
+body.dark-mode .table th {
+  background-color: #0f172a !important;
+  color: #000000 !important;
+  font-weight: 600;
+}
+
+body.dark-mode .table tbody tr {
+  color: #000000 !important;
+}
+
+body.dark-mode .table tbody tr td {
+  color: #000000 !important;
+}
+
+body.dark-mode .table-striped > tbody > tr:nth-of-type(odd) {
+  --bs-table-accent-bg: rgba(255, 255, 255, 0.05);
+  background-color: #e8e8e8;
+}
+
+body.dark-mode .table-striped > tbody > tr:nth-of-type(even) {
+  background-color: #f5f5f5;
+}
+
+body .table {
+  color: #212529;
+}
+
+body .table th {
+  background-color: #e9ecef;
+  color: #212529;
+  font-weight: 600;
+}
+
+body .table td,
+body .table th {
+  padding: 12px;
+}
+
+body.dark-mode .form-control,
+body.dark-mode .form-select {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  border-color: #374151;
+}
+
+body.dark-mode .form-control:focus,
+body.dark-mode .form-select:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 0.2rem rgba(37, 99, 235, 0.25);
+}
+
+body.dark-mode .alert {
+  background-color: #111827;
+  border-color: #374151;
+  color: #e5e7eb;
+}
+
+body.dark-mode .btn-outline-secondary {
+  color: #e5e7eb;
+  border-color: #6b7280;
+}
+
+body.dark-mode .btn-outline-secondary:hover {
+  color: #ffffff;
+  background-color: #374151;
+}
+
+body.dark-mode .form-label,
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6,
+body.dark-mode label,
+body.dark-mode strong,
+body.dark-mode .text-dark,
+body.dark-mode .card-header,
+body.dark-mode .card-title {
+  color: #ffffff;
+}
+
+body.dark-mode .card-header {
+  background-color: #0f172a;
+  border-color: #374151;
+}
+
+body.welcome-body {
+  overflow-x: hidden;
+}
+
+body.welcome-body .navbar {
+  display: none;
+}
+
+body.welcome-body main {
+  padding: 0;
+}
+
+.welcome-page {
+  min-height: 100vh;
+  width: 100vw;
+  padding: 0;
+  background: radial-gradient(circle at top left, rgba(59, 130, 246, 0.25), transparent 28%),
+    radial-gradient(circle at bottom right, rgba(16, 185, 129, 0.25), transparent 30%),
+    linear-gradient(180deg, #0f172a 0%, #111827 100%);
+}
+
+.welcome-page:hover {
+  cursor: pointer;
+}
+
+.welcome-hero {
+  max-width: 760px;
+  font-style: italic;
+  font-family: sans-serif, Arial, Helvetica, sans-serif;
+  color: #100e0e;
+}
+
+.welcome-hero h1,
+.welcome-hero p {
+  font-style: italic;
+  color: #242121;
+}
+
+body .card-body,
+body .card-body li,
+body .card-body strong,
+body .card-body h5 {
+  color: #000000;
+}
+
+body.dark-mode .card-body {
+  color: #000000 !important;
+}
+
+body.dark-mode .card-body li {
+  color: #000000 !important;
+}
+
+body.dark-mode .card-body strong {
+  color: #000000 !important;
+}
+
+body.dark-mode .card-body h5 {
+  color: #000000 !important;
+}
+
+body.dark-mode .card-body * {
+  color: #000000 !important;
+}
+
+body.dark-mode .text-muted,
+body.dark-mode .text-secondary,
+body.dark-mode .text-dark {
+  color: #ffffff !important;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+.card {
+  border: 0;
+}
+
+@media (max-width: 991.98px) {
+  .welcome-hero {
+    padding: 2rem 1.5rem;
+  }
+
+  .welcome-hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .welcome-hero p {
+    font-size: 1rem;
+  }
+
+  .table-responsive {
+    overflow-x: auto;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.85rem;
+    font-size: 0.95rem;
+  }
+
+  .pagination .page-link {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.9rem;
+  }
+
+  .form-control,
+  .form-select,
+  .btn {
+    font-size: 0.95rem;
+  }
+
+  .card-body h5 {
+    font-size: 1rem;
+  }
+
+  .card-body h2 {
+    font-size: 1.75rem;
+  }
+}
+
+@media (max-width: 767.98px) {
+  body.welcome-body main,
+  .welcome-page,
+  .auth-page {
+    min-height: 100vh;
+  }
+
+  .welcome-hero {
+    padding: 1.5rem 1rem;
+  }
+
+  .welcome-hero h1 {
+    font-size: 2rem;
+  }
+
+  .welcome-hero p {
+    font-size: 0.95rem;
+  }
+
+  .row.g-3 > [class*='col-'] {
+    max-width: 100%;
+    flex: 0 0 100%;
+  }
+
+  .text-end {
+    text-align: left !important;
+  }
+
+  .btn,
+  .btn-primary,
+  .btn-outline-secondary,
+  .btn-success {
+    width: 100%;
+  }
+
+  .table-responsive {
+    margin-bottom: 1rem;
+  }
+
+  .table th,
+  .table td {
+    white-space: normal;
+  }
+
+  .card {
+    min-height: auto;
+  }
+}
+

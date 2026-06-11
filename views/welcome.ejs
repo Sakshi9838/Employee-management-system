@@ -1,0 +1,9 @@
+<%- include('partials/header', { title: 'Welcome', user: null, isWelcome: true }) %>
+<div class="welcome-page d-flex align-items-center justify-content-center" onclick="window.location.href='/login'" role="button" tabindex="0" onkeypress="if(event.key==='Enter'){window.location.href='/login'}">
+  <div class="welcome-hero text-center px-4 py-5">
+    <h1 class="display-2 text-white mb-3">Employee Management</h1>
+    <p class="lead text-white-75 mb-4">Click anywhere on this page to continue to the login screen and access the employee dashboard.</p>
+    <a class="btn btn-light btn-lg" href="/login">Go to Login</a>
+  </div>
+</div>
+<%- include('partials/footer') %>

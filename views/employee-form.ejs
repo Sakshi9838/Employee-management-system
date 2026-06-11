@@ -1,0 +1,64 @@
+<%- include('partials/header', { title: formTitle, user: user }) %>
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card shadow-sm">
+      <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+        <h4><%= formTitle %></h4>
+        <a class="btn btn-light btn-sm" href="/employees">Back to List</a>
+      </div>
+      <div class="card-body">
+        <% if (error) { %>
+        <div class="alert alert-danger"><%= error %></div>
+        <% } %>
+        <form method="post" action="<%= action %>">
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="form-label">Full Name</label>
+              <input type="text" name="full_name" class="form-control" value="<%= employee.full_name || '' %>" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Email</label>
+              <input type="email" name="email" class="form-control" value="<%= employee.email || '' %>" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Mobile Number</label>
+              <input type="text" name="mobile" class="form-control" value="<%= employee.mobile || '' %>" pattern="\d{10}" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Department</label>
+              <select name="department_id" class="form-select" required>
+                <option value="">Select Department</option>
+                <% departments.forEach((department) => { %>
+                <option value="<%= department.id %>" <%= String(employee.department_id) === String(department.id) ? 'selected' : '' %>><%= department.name %></option>
+                <% }) %>
+              </select>
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Designation</label>
+              <input type="text" name="designation" class="form-control" value="<%= employee.designation || '' %>" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Salary</label>
+              <input type="number" name="salary" class="form-control" min="1" value="<%= employee.salary || '' %>" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Joining Date</label>
+              <input type="date" name="joining_date" class="form-control" value="<%= employee.joining_date || '' %>" required />
+            </div>
+            <div class="col-md-6">
+              <label class="form-label">Status</label>
+              <select name="status" class="form-select" required>
+                <option value="Active" <%= employee.status === 'Active' ? 'selected' : '' %>>Active</option>
+                <option value="Inactive" <%= employee.status === 'Inactive' ? 'selected' : '' %>>Inactive</option>
+              </select>
+            </div>
+          </div>
+          <div class="mt-4 text-end">
+            <button type="submit" class="btn btn-primary">Save Employee</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>

@@ -1,0 +1,105 @@
+<%- include('partials/header', { title: 'Employee List', user: user }) %>
+<div class="row mb-3">
+  <div class="col-md-8">
+    <h2>Employees</h2>
+  </div>
+  <div class="col-md-4 text-end">
+    <% if (isAdmin) { %>
+    <a class="btn btn-success" href="/employees/add">Add Employee</a>
+    <a class="btn btn-outline-secondary" href="/employees/export">Export Excel</a>
+    <% } %>
+  </div>
+</div>
+<div class="row mb-4">
+  <div class="col-md-12">
+    <form class="row g-3" method="get" action="/employees">
+      <div class="col-md-4">
+        <input type="text" name="q" class="form-control" placeholder="Search by name or email" value="<%= search %>" />
+      </div>
+      <div class="col-md-3">
+        <select class="form-select" name="sort">
+          <option value="name" <%= sort === 'name' ? 'selected' : '' %>>Sort by Name</option>
+          <option value="joining_date" <%= sort === 'joining_date' ? 'selected' : '' %>>Sort by Joining Date</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <select class="form-select" name="dir">
+          <option value="asc" <%= dir === 'asc' ? 'selected' : '' %>>Ascending</option>
+          <option value="desc" <%= dir === 'desc' ? 'selected' : '' %>>Descending</option>
+        </select>
+      </div>
+      <div class="col-md-3 text-end">
+        <button class="btn btn-primary">Search</button>
+        <a class="btn btn-outline-secondary" href="/employees">Reset</a>
+      </div>
+    </form>
+  </div>
+</div>
+<% if (error) { %>
+<div class="alert alert-danger"><%= error %></div>
+<% } %>
+<div class="table-responsive">
+  <table class="table table-striped align-middle">
+    <thead>
+      <tr>
+        <th>Code</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Department</th>
+        <th>Designation</th>
+        <th>Salary</th>
+        <th>Joining Date</th>
+        <th>Status</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% employees.forEach((employee) => { %>
+      <tr>
+        <td><%= employee.employee_code %></td>
+        <td><%= employee.full_name %></td>
+        <td><%= employee.email %></td>
+        <td><%= employee.mobile %></td>
+        <td><%= employee.department_name %></td>
+        <td><%= employee.designation %></td>
+        <td><%= employee.salary %></td>
+        <td><%= employee.joining_date %></td>
+        <td><span class="badge <%= employee.status === 'Active' ? 'bg-success' : 'bg-secondary' %>"><%= employee.status %></span></td>
+        <td>
+          <% if (isAdmin) { %>
+          <a class="btn btn-sm btn-primary" href="/employees/edit/<%= employee.id %>">Edit</a>
+          <form action="/employees/delete/<%= employee.id %>" method="post" class="d-inline" onsubmit="return confirm('Delete this employee?');">
+            <button class="btn btn-sm btn-danger">Delete</button>
+          </form>
+          <% } else { %>
+          <span class="text-muted">Read-only</span>
+          <% } %>
+        </td>
+      </tr>
+      <% }) %>
+      <% if (!employees.length) { %>
+      <tr>
+        <td colspan="10" class="text-center text-muted">No employees found.</td>
+      </tr>
+      <% } %>
+    </tbody>
+  </table>
+</div>
+<nav aria-label="Page navigation">
+  <ul class="pagination justify-content-center">
+    <% const totalPages = Math.ceil(total / pageSize); %>
+    <li class="page-item <%= page <= 1 ? 'disabled' : '' %>">
+      <a class="page-link" href="/employees?page=<%= page - 1 %>&q=<%= search %>&sort=<%= sort %>&dir=<%= dir %>">Previous</a>
+    </li>
+    <% for (let i = 1; i <= totalPages; i++) { %>
+    <li class="page-item <%= page === i ? 'active' : '' %>">
+      <a class="page-link" href="/employees?page=<%= i %>&q=<%= search %>&sort=<%= sort %>&dir=<%= dir %>"><%= i %></a>
+    </li>
+    <% } %>
+    <li class="page-item <%= page >= totalPages ? 'disabled' : '' %>">
+      <a class="page-link" href="/employees?page=<%= page + 1 %>&q=<%= search %>&sort=<%= sort %>&dir=<%= dir %>">Next</a>
+    </li>
+  </ul>
+</nav>
+<%- include('partials/footer') %>

@@ -1,0 +1,54 @@
+<%- include('partials/header', { title: 'Dashboard', user: user }) %>
+<div class="row mb-4">
+  <div class="col-12">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h2>Dashboard</h2>
+      <a class="btn btn-outline-secondary" href="/employees">Manage Employees</a>
+    </div>
+    <% if (error) { %>
+    <div class="alert alert-danger"><%= error %></div>
+    <% } %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-3 mb-3">
+    <div class="card text-white bg-primary h-100">
+      <div class="card-body">
+        <h5>Total Employees</h5>
+        <h2><%= stats ? stats.total : 0 %></h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 mb-3">
+    <div class="card text-white bg-success h-100">
+      <div class="card-body">
+        <h5>Active Employees</h5>
+        <h2><%= stats ? stats.active : 0 %></h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 mb-3">
+    <div class="card text-white bg-secondary h-100">
+      <div class="card-body">
+        <h5>Inactive Employees</h5>
+        <h2><%= stats ? stats.inactive : 0 %></h2>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-3 mb-3">
+    <div class="card text-dark bg-light h-100">
+      <div class="card-body">
+        <h5>Recently Added</h5>
+        <ul class="list-unstyled mb-0">
+          <% recent.forEach((item) => { %>
+          <li><strong><%= item.employee_code %></strong> - <%= item.full_name %></li>
+          <% }) %>
+          <% if (!recent.length) { %>
+          <li class="text-muted">No recent additions.</li>
+          <% } %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/footer') %>
